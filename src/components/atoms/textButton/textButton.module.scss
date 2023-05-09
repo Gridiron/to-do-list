@@ -1,0 +1,19 @@
+.textButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.active {
+  color: blue;
+  &:hover {
+    color: blue;
+  }
+}
+
+.notActive {
+  color: #a9a9a9;
+  &:hover {
+    color: #2f4f4f;
+  }
+}

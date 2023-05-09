@@ -1,0 +1,25 @@
+.listItem {
+  background-color: #ffffff;
+  border-radius: 3px;
+  display: grid;
+  height: 50px;
+  align-items: center;
+  grid-template-columns: 50px auto 50px;
+  border: 1px solid transparent;
+  &:hover {
+    border: gray 1px solid;
+  }
+}
+
+.checkBoxContainer {
+  justify-self: center;
+}
+
+.titleContainer {
+  justify-self: start;
+}
+
+.closeButtonContainer {
+  width: 50px;
+  justify-self: end;
+}

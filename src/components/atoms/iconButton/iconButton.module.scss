@@ -1,0 +1,17 @@
+.iconButton {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  color: #a9a9a9;
+  &:hover {
+    color: #2f4f4f;
+  }
+}

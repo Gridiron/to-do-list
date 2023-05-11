@@ -8,7 +8,13 @@
   border: 1px solid transparent;
   &:hover {
     border: gray 1px solid;
+    cursor: grab;
   }
+}
+
+.listItemContainer {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .checkBoxContainer {

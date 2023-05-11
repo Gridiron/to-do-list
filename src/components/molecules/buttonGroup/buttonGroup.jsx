@@ -1,26 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import styles from './buttonGroup.module.scss';
 import TextButton from '../../atoms/textButton/textButton';
 
-const ButtonGroup = () => {
+const ButtonGroup = ({ activeButtonChangeCallback }) => {
+  const [currentlyActive, SetCurrentlyActive] = useState('All');
+
+  const handleClick = (value) => {
+    activeButtonChangeCallback(value);
+    SetCurrentlyActive(value);
+  };
+
+  const all = 'All';
+  const completed = 'Completed';
+  const active = 'Active';
+
   return (
     <div className={styles.buttonGroup}>
       <div className={styles.buttonsInGroup}>
-        <TextButton isActive={true}>All</TextButton>
+        <TextButton isActive={currentlyActive === all} buttonClickedHandler={handleClick}>
+          {all}
+        </TextButton>
       </div>
       <div className={styles.buttonsInGroup}>
-        <TextButton>Active</TextButton>
+        <TextButton isActive={currentlyActive === completed} buttonClickedHandler={handleClick}>
+          {completed}
+        </TextButton>
       </div>
       <div className={styles.buttonsInGroup}>
-        <TextButton>Completed</TextButton>
+        <TextButton isActive={currentlyActive === active} buttonClickedHandler={handleClick}>
+          {active}
+        </TextButton>
       </div>
     </div>
   );
-};
-
-ButtonGroup.propTypes = {
-  headerText: PropTypes.string.isRequired,
 };
 
 export default ButtonGroup;

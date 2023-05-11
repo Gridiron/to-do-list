@@ -1,28 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './listFooter.module.scss';
 import Paragraph from '../../atoms/paragraph/paragraph';
 import TextButton from '../../atoms/textButton/textButton';
 import ButtonGroup from '../buttonGroup/buttonGroup';
 
-const ListFooter = () => {
+const ListFooter = ({ clearCompletedCallBack, itemsLeft, setFilterCallback }) => {
   return (
     <div className={styles.listFooter}>
       <div className={styles.leftoverContainer}>
-        <Paragraph text="5 items left" />
+        <Paragraph text={`${itemsLeft} items left`} />
       </div>
       <div className={styles.filterContainer}>
-        <ButtonGroup />
+        <ButtonGroup activeButtonChangeCallback={setFilterCallback} />
       </div>
       <div className={styles.clearButtonContainer}>
-        <TextButton>Clear completed</TextButton>
+        <TextButton buttonClickedHandler={clearCompletedCallBack}>Clear completed</TextButton>
       </div>
     </div>
   );
-};
-
-ListFooter.propTypes = {
-  headerText: PropTypes.string.isRequired,
 };
 
 export default ListFooter;

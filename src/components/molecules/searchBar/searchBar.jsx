@@ -1,24 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import styles from './searchBar.module.scss';
 import CheckBox from '../../atoms/checkBox/checkBox';
-import Title from '../../atoms/title/title';
+import TextBox from '../../atoms/textBox/textBox';
 
-const SearchBar = ({ title }) => {
+const SearchBar = ({ callBack }) => {
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [title, setTitle] = useState('');
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      callBack(title, isCompleted);
+      setTitle('');
+      setIsCompleted(false);
+    }
+  };
+
   return (
-    <div className={styles.seachBarContainer}>
+    <div className={styles.seachBarContainer} onKeyDown={handleKeyDown}>
       <div className={styles.checkBoxContainer}>
-        <CheckBox />
+        <CheckBox checkBoxValue={isCompleted} setCheckBoxValue={setIsCompleted} />
       </div>
       <div className={styles.titleContainer}>
-        <Title>{title}</Title>
+        <TextBox textValue={title} setTextValue={setTitle} />
       </div>
     </div>
   );
-};
-
-SearchBar.propTypes = {
-  headerText: PropTypes.string.isRequired,
 };
 
 export default SearchBar;

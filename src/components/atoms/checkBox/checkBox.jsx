@@ -1,20 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './checkBox.module.scss';
 
-const CheckBox = () => {
+const CheckBox = ({ checkBoxValue, setCheckBoxValue }) => {
+  const handleInputChange = (event) => {
+    setCheckBoxValue(event.target.checked);
+  };
+
   return (
     <div className={styles.customCheckBox}>
       <label>
-        <input className={styles.checkBox} type="checkbox" />
+        <input
+          className={styles.checkBox}
+          type="checkbox"
+          checked={checkBoxValue}
+          onChange={handleInputChange}
+        />
         <span className={styles.checkMark}></span>
       </label>
     </div>
   );
-};
-
-CheckBox.propTypes = {
-  headerText: PropTypes.string.isRequired,
 };
 
 export default CheckBox;

@@ -1,13 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './textBox.module.scss';
 
-const TextBox = ({ headerText }) => {
-  return <h1 className={styles.header}>{headerText}</h1>;
-};
+const TextBox = ({ textValue, setTextValue }) => {
+  const handleInputChange = (event) => {
+    setTextValue(event.target.value);
+  };
 
-TextBox.propTypes = {
-  headerText: PropTypes.string.isRequired,
+  return (
+    <input
+      className={styles.customInput}
+      type="text"
+      placeholder="Start typing"
+      value={textValue}
+      onChange={handleInputChange}
+    />
+  );
 };
 
 export default TextBox;
